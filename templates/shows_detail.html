@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOWS detail</title>
+</head>
+<body>
+<div>
+    <h2>Title: {{ show.title }}</h2>
+    <img src="{{ show.image.url }}" alt="">
+    <p>{{ show.description }}</p>
+    <p>Genre: {{ show.genre }}</p>
+    <p>Quantity of series: {{ show.quantity }}</p>
+    <p>Created-Date: {{ show.created_date }}</p>
+    <p>Updated-date: {{ show.updated_date }}</p>
+    <p>Duration: {{ show.duration }}</p>
+</div>
+<div>
+    <h2>Comments: </h2>
+    <ul>
+        {% for i in show.shows_comment.all %}
+        <li>
+            <p>{{ i.text }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
