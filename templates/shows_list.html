@@ -1,19 +1,53 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>TV-SHOW</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 </head>
 <body>
-<div>
-    <ul>
+<style>
+    body {
+        background: #F0F2F0; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #000C40, #F0F2F0); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .shows__container {
+        max-width: 700px;
+        margin-top: 40px;
+    }
+
+    .shows__img {
+        height: 250px;
+        object-fit: fill;
+    }
+
+    .shows__cardbody {
+        background: #ee0979;
+        background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);
+        background: linear-gradient(to right, #ff6a00, #ee0979);
+        height: 100%;
+        font-family: "Droid Sans Mono Slashed";
+    }
+
+</style>
+<div class="container shows__container">
+    <div class="row gy-5">
         {% for show in shows %}
-        <li>
-            <h2><a href="{{ show.id }}/">{{ show.title }}</a></h2>
-            <img src="{{ show.image.url }}" alt="">
-        </li>
+        <div class="col-3">
+            <div class="card">
+                <img src="{{ show.image.url }}" class="card-img-top shows__img" alt="...">
+                <div class="card-body shows__cardbody">
+                    <h5 class="card-title">{{ show.title }}</h5>
+                    <p class="card-text">{{ show.genre }}</p>
+                    <a href="{{ show.id }}/" class="btn btn-primary">Go Detail</a>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 </div>
 </body>
 </html>
