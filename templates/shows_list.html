@@ -32,7 +32,22 @@
         font-family: "Droid Sans Mono Slashed";
     }
 
+    .shows__button {
+        margin-top: 20px;
+        background-color: #ff582f;
+    }
 </style>
+<div class="container">
+    <button type="button" class="btn btn-secondary shows__button"><a href="/shows/">All Shows</a></button>
+    <button type="button" class="btn btn-secondary shows__button"><a href="/shows/latest/">Latest</a></button>
+    <button type="button" class="btn btn-secondary shows__button"><a href="/shows/year/">One year</a></button>
+    <button type="button" class="btn btn-secondary shows__button"><a href="/shows/anime/">Anime</a></button>
+    <button type="button" class="btn btn-secondary shows__button"><a href="/shows/action/">Action</a></button>
+    <button type="button" class="btn btn-secondary shows__button"><a href="/shows/romantic/">Romantic</a></button>
+    <button type="button" class="btn btn-secondary shows__button"><a href="/shows/horror/">Horror</a></button>
+    <button type="button" class="btn btn-secondary shows__button"><a href="/shows/fantastic/">Fantastic</a></button>
+</div>
+
 <div class="container shows__container">
     <div class="row gy-5">
         {% for show in shows %}
@@ -42,7 +57,7 @@
                 <div class="card-body shows__cardbody">
                     <h5 class="card-title">{{ show.title }}</h5>
                     <p class="card-text">{{ show.genre }}</p>
-                    <a href="{{ show.id }}/" class="btn btn-primary">Go Detail</a>
+                    <a href="/shows/{{ show.id }}/" class="btn btn-primary">Go Detail</a>
                 </div>
             </div>
         </div>

@@ -14,6 +14,9 @@
     <p>Created-Date: {{ show.created_date }}</p>
     <p>Updated-date: {{ show.updated_date }}</p>
     <p>Duration: {{ show.duration }}</p>
+    <a href="/add-show/">Add New TVShow</a>
+    <a href="/shows/{{ show.id }}/update/">Change {{ show.title }}</a>
+    <a href="/shows/{{ show.id }}/delete/">Delete {{ show.title }}</a>
 </div>
 <div>
     <h2>Comments: </h2>
@@ -22,9 +25,9 @@
         <li>
             <p>{{ i.text }}</p>
         </li>
+
         {% endfor %}
     </ul>
-    <a href="/add-show/">Add New TVShow</a>
 </div>
 </body>
 </html>
