@@ -1,33 +1,59 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>SHOWS detail</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 </head>
 <body>
-<div>
-    <h2>Title: {{ show.title }}</h2>
-    <img src="{{ show.image.url }}" alt="">
-    <p>{{ show.description }}</p>
-    <p>Genre: {{ show.genre }}</p>
-    <p>Quantity of series: {{ show.quantity }}</p>
-    <p>Created-Date: {{ show.created_date }}</p>
-    <p>Updated-date: {{ show.updated_date }}</p>
-    <p>Duration: {{ show.duration }}</p>
-    <a href="/add-show/">Add New TVShow</a>
-    <a href="/shows/{{ show.id }}/update/">Change {{ show.title }}</a>
-    <a href="/shows/{{ show.id }}/delete/">Delete {{ show.title }}</a>
-</div>
-<div>
-    <h2>Comments: </h2>
-    <ul>
-        {% for i in show.shows_comment.all %}
-        <li>
-            <p>{{ i.text }}</p>
-        </li>
+<style>
+    body {
+        background: #F0F2F0; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #000C40, #F0F2F0); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
 
-        {% endfor %}
-    </ul>
+    .shows__image {
+        margin-top: 20px;
+
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .body__detail {
+        margin-top: 20px;
+
+    }
+
+</style>
+<div class="container show_detail__container">
+    <div class="card">
+        <img src="{{ object.image.url }}" class="card-img-top shows__image" alt="">
+        <div class="card-body body__detail">
+            <h2 class="card-title">Title: {{ object.title }}</h2>
+            <p class="card-text">{{ object.description }}</p>
+            <p class="card-text">Genre: {{ object.genre }}</p>
+            <p class="card-text">Quantity of series: {{ object.quantity }}</p>
+            <p class="card-text">Created-Date: {{ object.created_date }}</p>
+            <p class="card-text">Updated-date: {{ object.updated_date }}</p>
+            <p class="card-text">Duration: {{ object.duration }}</p>
+            <a href="/add-show/">Add New TVShow</a>
+            <a href="/shows/{{ object.id }}/update/">Change {{ object.title }}</a>
+            <a href="/shows/{{ object.id }}/delete/">Delete {{ object.title }}</a>
+            <div class="card-body">
+                <h2>Comments: </h2>
+                <ul>
+                    {% for i in object.shows_comment.all %}
+                    <li>
+                        <p>{{ i.text }}</p>
+                    </li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
